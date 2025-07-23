@@ -6,7 +6,7 @@ export default defineNuxtConfig({
   ssr: false,
   app: {
     baseURL: process.env.NODE_ENV === 'production' ? '/gltf-optimization/' : '/', // 替换为你的仓库名
-    buildAssetsDir: '/docs/_nuxt/', // 静态资源目录
+    buildAssetsDir: '/_nuxt/', // 静态资源目录
     head: {
       meta: [
         { charset: 'utf-8' },
