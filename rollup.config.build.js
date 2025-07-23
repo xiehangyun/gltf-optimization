@@ -1,0 +1,50 @@
+// rollup.config.js
+import replace from '@rollup/plugin-replace';
+import typescript from '@rollup/plugin-typescript';
+import terser from '@rollup/plugin-terser';
+import { config } from 'dotenv';
+import { dirname } from 'path';
+import { dts } from 'rollup-plugin-dts';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+const settings = {
+    globals: {},
+    sourcemap: false,
+};
+
+export default [
+    {
+        input: 'pages/gltf-to-ktx2/gltfTransform.ts',
+        output: {
+            dir: 'gltf-optimization',
+            format: 'es',
+            name: 'gltf-optimization',
+        },
+        external: [
+        ],
+        plugins: [
+            typescript(),
+            replace({
+                preventAssignment: true,
+                'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV).trim(),
+            }),
+            terser({
+                mangle: {
+                }
+            })
+        ],
+    },
+    {
+        input: 'pages/gltf-to-ktx2/gltfTransform.ts',
+        output: {
+            file: 'gltf-optimization/gltf-optimization.d.ts',
+            format: 'es',
+        },
+        plugins: [
+            dts(),
+        ],
+    }
+];
