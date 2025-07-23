@@ -5,7 +5,8 @@ import fs from 'fs';
 export default defineNuxtConfig({
   ssr: false,
   app: {
-    baseURL: '/docs',
+    baseURL: process.env.NODE_ENV === 'production' ? '/gltf-optimization/' : '/', // 替换为你的仓库名
+    buildAssetsDir: '/docs/_nuxt/', // 静态资源目录
     head: {
       meta: [
         { charset: 'utf-8' },
@@ -16,7 +17,7 @@ export default defineNuxtConfig({
       ],
     },
   },
-  rootDir: './',
+  rootDir: 'docs',
   plugins: [],
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
