@@ -17,7 +17,6 @@ export default defineNuxtConfig({
       ],
     },
   },
-  rootDir: 'docs',
   plugins: [],
   compatibilityDate: '2024-11-01',
   devtools: { enabled: true },
