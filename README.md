@@ -2,7 +2,7 @@
 
 在web端进行GLTF模型优化与KTX2压缩。
 
-[![](/image.png)](https://badge.fury.io/js/babylonjs)
+[![](public/image.png)](https://badge.fury.io/js/babylonjs)
 
 初始化命令
 
