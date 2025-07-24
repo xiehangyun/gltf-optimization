@@ -15,3 +15,5 @@
 编译模块命令
 
 `npm run buildGltfOptimization`
+
+注意，部署到Web时，需将public依赖手动拷贝到程序public文件夹。
