@@ -17,7 +17,6 @@
 `npm run buildGltfOptimization`
 
 注意，部署到Web时，需将public依赖手动拷贝到程序public文件夹。
-use
 
 ```typescript
 import { gltfOptimization } from'./gltfTransform.js';
@@ -36,3 +35,14 @@ const options = {
 const optimizedArrayBuffer = await gltfOptimization(arrayBuffer, options);
 
 ```
+
+
+## 关键特性
+
+- **基于网页的处理**：所有操作均通过网页工作者在客户端执行
+- **基础通用**：使用basis_encoder.js进行GPU优化纹理压缩
+- **模型优化**：完整的glTF优化管道（网格合并、节点扁平化）
+- **尺寸控制**：可配置的纹理下采样以满足平台限制，KTX 纹理压缩仅支持 2K 及以下分辨率的纹理。
+
+> **性能提示**：KTX2 压缩计算密集型。对于较大模型（>50MB），建议实现进度指示器。
+>
