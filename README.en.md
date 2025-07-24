@@ -5,9 +5,11 @@ Optimize GLTF models and compress textures with KTX2 directly in the browser env
 ## Setup & Commands
 
 **Initialize Dependencies**
+
 `npm install`
 
 **Run Development Server**
+
 `npm run dev`
 
 **Build GLTF Optimization Module** 
