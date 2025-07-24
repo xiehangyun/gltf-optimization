@@ -17,7 +17,7 @@
 
  `npm run buildGltfOptimization`
 
-> **部署说明**：在部署到生产环境时，请手动将公共依赖项复制到应用程序的公共文件夹中。
+> **部署说明**：在部署到生产环境时，请手动将public依赖项复制到应用程序的public文件夹中。
 
 ## 实现示例
 
@@ -40,8 +40,6 @@ const options = {
 // 使用优化管道处理 GLB
 const optimizedArrayBuffer = await gltfOptimization(arrayBuffer, options);
 ```
-
-通过DeepL.com（免费版）翻译
 
 ## 关键特性
 
