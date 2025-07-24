@@ -9,8 +9,9 @@
     <input type="file" id="glbInput" accept=".glb" />
 
 </body>
-<script type="module">
-    import { gltfOptimization } from './gltfTransform.js';
+<script src="./gltfTransform.js"></script>
+<script>
+    console.log(gltfOptimization)
     let glbInput = document.getElementById('glbInput');
     glbInput.addEventListener('change', async (event) => {
         const file = event.target.files[0];

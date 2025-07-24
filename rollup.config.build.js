@@ -21,18 +21,19 @@ export default [
         input: 'pages/gltf-to-ktx2/gltfTransform.ts',
         output: {
             dir: 'gltf-optimization',
-            format: 'es',
-            name: 'gltf-optimization',
+            format: 'umd',
+            name: 'gltfOptimization',
         },
         plugins: [
             resolve(),
             commonjs({
                 include: ['node_modules/ndarray/**', 'node_modules/ndarray-pixels/**', 'node_modules/ndarray-ops/**', 'node_modules/draco3dgltf/**'], // 显式包含问题模块
-                transformMixedEsModules: true, // 处理混合ES/CJS模块[6](@ref)
+                transformMixedEsModules: false, // 处理混合ES/CJS模块[6](@ref)
                 namedExports: {
-                    'draco3dgltf': ['createDecoderModule', 'createEncoderModule']
+                    'draco3dgltf': ['createDecoderModule', 'createEncoderModule'],
+                    'buffer': ['isBuffer']
                 },
-                ignore: ['fs','path'], // 忽略fs模块
+                ignore: ['fs', 'path'], // 忽略fs模块
             }),
             typescript(),
             replace({
