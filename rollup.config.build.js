@@ -31,7 +31,8 @@ export default [
                 transformMixedEsModules: true, // 处理混合ES/CJS模块[6](@ref)
                 namedExports: {
                     'draco3dgltf': ['createDecoderModule', 'createEncoderModule']
-                }
+                },
+                ignore: ['fs','path'], // 忽略fs模块
             }),
             typescript(),
             replace({
