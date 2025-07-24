@@ -6,10 +6,21 @@
 </head>
 <body>
     <h1>Hello World!</h1>
-    <p>这是我的第一个HTML页面123</p>
+    <input type="file" id="glbInput" accept=".glb" />
+
 </body>
 <script type="module">
     import { gltfOptimization } from './gltfTransform.js';
-    console.log(gltfOptimization)
+    let glbInput = document.getElementById('glbInput');
+    glbInput.addEventListener('change', async (event) => {
+        const file = event.target.files[0];
+        if (file) {
+            const arrayBuffer = await file.arrayBuffer();
+            const result = await gltfOptimization(arrayBuffer);
+            console.log(result);
+        } else {
+            console.error('No file selected');
+        }
+    });
 </script>
 </html>

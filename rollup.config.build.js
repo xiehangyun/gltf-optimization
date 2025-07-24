@@ -6,7 +6,8 @@ import { config } from 'dotenv';
 import { dirname } from 'path';
 import { dts } from 'rollup-plugin-dts';
 import { fileURLToPath } from 'url';
-
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
@@ -23,9 +24,15 @@ export default [
             format: 'es',
             name: 'gltf-optimization',
         },
-        external: [
-        ],
         plugins: [
+            resolve(),
+            commonjs({
+                include: ['node_modules/ndarray/**', 'node_modules/ndarray-pixels/**', 'node_modules/ndarray-ops/**', 'node_modules/draco3dgltf/**'], // 显式包含问题模块
+                transformMixedEsModules: true, // 处理混合ES/CJS模块[6](@ref)
+                namedExports: {
+                    'draco3dgltf': ['createDecoderModule', 'createEncoderModule']
+                }
+            }),
             typescript(),
             replace({
                 preventAssignment: true,
