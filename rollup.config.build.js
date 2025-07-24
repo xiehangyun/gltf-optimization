@@ -21,14 +21,14 @@ export default [
         input: 'pages/gltf-to-ktx2/gltfTransform.ts',
         output: {
             dir: 'gltf-optimization',
-            format: 'umd',
+            format: 'es',
             name: 'gltfOptimization',
         },
         plugins: [
             resolve(),
             commonjs({
-                include: ['node_modules/ndarray/**', 'node_modules/ndarray-pixels/**', 'node_modules/ndarray-ops/**', 'node_modules/draco3dgltf/**'], // 显式包含问题模块
-                transformMixedEsModules: false, // 处理混合ES/CJS模块[6](@ref)
+                include: ['node_modules/ndarray/**', 'node_modules/ndarray-pixels/**', 'node_modules/ndarray-ops/**', 'node_modules/draco3dgltf/**', 'node_modules/is-buffer/**'], // 显式包含问题模块
+                transformMixedEsModules: true, // 处理混合ES/CJS模块[6](@ref)
                 namedExports: {
                     'draco3dgltf': ['createDecoderModule', 'createEncoderModule'],
                     'buffer': ['isBuffer']
