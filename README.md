@@ -22,7 +22,7 @@
 ## 实现示例
 
 ```typescript
-import { gltfOptimization } from ‘./gltfTransform.js’;
+import { gltfOptimization } from './gltfTransform.js';
 
 // 从输入获取 GLB 文件
 const file: File = input.files[0];
