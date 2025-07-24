@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GLB优化工具</title>
+    <title>GLB Optimization Tool</title>
     <style>
         html,
         body {
@@ -39,10 +39,10 @@
 </head>
 <body>
     <div class="container">
-        <div class="warning">注意！KTX2压缩仅支持2K及以下纹理</div>
+        <div class="warning">Note! KTX2 compression only supports textures up to 2K</div>
 
         <div>
-            <label for="maxSize">最大纹理尺寸：</label>
+            <label for="maxSize">Max Texture Size:</label>
             <select id="maxSize">
                 <option value="512">512</option>
                 <option value="1024">1024</option>
@@ -51,27 +51,27 @@
         </div>
 
         <div>
-            <label for="hasJoin">合并相同材质网格：</label>
+            <label for="hasJoin">Merge Meshes with Identical Materials:</label>
             <input type="checkbox" id="hasJoin" checked>
         </div>
 
         <div>
-            <label for="hasPalette">纯色材质创建统一调色板纹理并合并：</label>
+            <label for="hasPalette">Create Unified Palette Texture for Solid Colors and Merge:</label>
             <input type="checkbox" id="hasPalette" checked>
         </div>
 
         <div>
-            <label for="hasFlatten">展平多余节点：</label>
+            <label for="hasFlatten">Flatten Redundant Nodes:</label>
             <input type="checkbox" id="hasFlatten" checked>
         </div>
 
         <div>
-            <label for="hasKtx2">启用KTX2纹理压缩：</label>
+            <label for="hasKtx2">Enable KTX2 Texture Compression:</label>
             <input type="checkbox" id="hasKtx2" checked>
         </div>
 
         <div>
-            <label for="glbInput">选择一个GLB文件：</label>
+            <label for="glbInput">Select a GLB File:</label>
             <input type="file" id="glbInput" accept=".glb">
         </div>
     </div>
@@ -79,7 +79,7 @@
     <script type="module">
         import { gltfOptimization } from './gltfTransform.js';
 
-        // 获取所有DOM元素引用
+        // Get DOM element references
         const maxSizeEl = document.getElementById('maxSize');
         const hasJoinEl = document.getElementById('hasJoin');
         const hasPaletteEl = document.getElementById('hasPalette');
@@ -87,7 +87,7 @@
         const hasKtx2El = document.getElementById('hasKtx2');
         const glbInputEl = document.getElementById('glbInput');
 
-        // 处理文件选择变化
+        // Handle file selection changes
         glbInputEl.addEventListener('change', async (event) => {
             const input = event.target;
             input.disabled = true;
@@ -97,7 +97,7 @@
                     const file = input.files[0];
                     const arrayBuffer = await file.arrayBuffer();
 
-                    // 获取当前选项值
+                    // Get current options values
                     const options = {
                         maxSize: parseInt(maxSizeEl.value),
                         hasJoin: hasJoinEl.checked,
@@ -106,10 +106,10 @@
                         hasKtx2: hasKtx2El.checked
                     };
 
-                    // 执行优化
+                    // Execute optimization
                     const optimizedArrayBuffer = await gltfOptimization(arrayBuffer, options);
 
-                    // 创建下载链接
+                    // Create download link
                     const blob = new Blob([optimizedArrayBuffer], { type: 'application/octet-stream' });
                     const url = URL.createObjectURL(blob);
                     const a = document.createElement('a');
@@ -121,13 +121,13 @@
                     URL.revokeObjectURL(url);
 
                 } catch (error) {
-                    console.error('处理文件时出错:', error);
-                    alert('处理文件时出错: ' + error.message);
+                    console.error('Error processing file:', error);
+                    alert('Error processing file: ' + error.message);
                 } finally {
                     input.disabled = false;
                 }
             } else {
-                alert('请上传一个有效的GLB文件。');
+                alert('Please upload a valid GLB file.');
             }
         });
     </script>
