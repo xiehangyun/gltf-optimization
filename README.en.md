@@ -1,4 +1,3 @@
-
 # Integrate @gltf-transform with basis_encoder.js
 
 Optimize GLTF models and compress textures with KTX2 directly in the browser environment.
@@ -11,7 +10,9 @@ Optimize GLTF models and compress textures with KTX2 directly in the browser env
 **Run Development Server**
 `npm run dev`
 
-**Build GLTF Optimization Module**`npm run buildGltfOptimization`
+**Build GLTF Optimization Module** 
+
+`npm run buildGltfOptimization`
 
 > **Deployment Note**: When deploying to production web environments, manually copy public dependencies to your application's public folder.
 
@@ -45,4 +46,3 @@ const optimizedArrayBuffer = await gltfOptimization(arrayBuffer, options);
 - **Size Control**: Configurable texture downsampling to meet platform constraints，KTX texture compression only supports textures of 2K and below.
 
 > **Performance Note**: KTX2 compression is computationally intensive. For larger models (>50MB), consider implementing progress indicators.
->

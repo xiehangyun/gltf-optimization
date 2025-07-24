@@ -11,7 +11,9 @@
 **运行开发服务器**
 `npm run dev`
 
-**构建 GLTF 优化模块** `npm run buildGltfOptimization`
+**构建 GLTF 优化模块**
+
+ `npm run buildGltfOptimization`
 
 > **部署说明**：在部署到生产环境时，请手动将公共依赖项复制到应用程序的公共文件夹中。
 
