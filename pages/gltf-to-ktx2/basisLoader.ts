@@ -3,7 +3,7 @@ let basisEncoder: any = null;
 export function initBasis() {
   return new Promise((resolve) => {
     if (basisEncoder) return resolve(basisEncoder);
-    const scriptSrc = '/basis/encoder/basis_encoder.js';
+    const scriptSrc = './basis/encoder/basis_encoder.js';
 
     const script = document.createElement('script');
     script.src = scriptSrc;
